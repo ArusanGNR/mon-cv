@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arusan GNANASIRI — CV</title>
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"> -->
+  <style>
+    :root {
+      --paper: #F5F6F3;
+      --panel: #EAEDE8;
+      --ink: #1B231F;
+      --ink-soft: #4B564F;
+      --accent: #2B6156;
+      /* vert forêt */
+      --accent-soft: #8FA396;
+      --rule: #D6DAD3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.5;
+      /* -webkit-font-smoothing: antialiased; */
+    }
+
+    /* Mise en page générale */
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 64px 40px 80px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* En-tête */
+    header.hero {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 28px;
+      margin-bottom: 12px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero h1 {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: 600;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      letter-spacing: -0.01em;
+      margin: 0 0 6px;
+    }
+
+    .hero .role {
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .qr-block {
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .qr-block img {
+      width: 96px;
+      height: 96px;
+      display: block;
+      border: 1px solid var(--rule);
+      padding: 6px;
+      background: #fff;
+    }
+
+    .qr-block span {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    /* Colonne latérale */
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .photo {
+      width: 175px;
+      height: 175px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--panel);
+      outline: 1px solid var(--rule);
+      display: block;
+    }
+
+    .block-title {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--ink);
+      font-weight: 700;
+      margin: 0 0 14px;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-list a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .contact-list a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .skills {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skills li {
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      font-size: 0.82rem;
+      padding: 5px 11px;
+      border-radius: 3px;
+    }
+
+    .languages {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .languages li {
+      display: flex;
+      justify-content: space-between;
+      color: var(--ink-soft);
+    }
+
+    .languages b {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Colonne principale */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    p.summary {
+      font-size: 1.02rem;
+      color: var(--ink-soft);
+      max-width: 56ch;
+      margin: 0;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 26px;
+      border-left: 2px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .timeline .entry {
+      position: relative;
+    }
+
+    .timeline .entry::before {
+      content: "";
+      position: absolute;
+      left: -32px;
+      top: 4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .entry .meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .entry h3 {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 600;
+      font-size: 1.12rem;
+      margin: 0;
+    }
+
+    .entry .org {
+      color: var(--accent-soft);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .entry .dates {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .entry p {
+      margin: 6px 0 0;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+      max-width: 60ch;
+    }
+
+    footer {
+      grid-column: 1 / -1;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width:720px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      header.hero {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page {
+        padding: 40px 20px 56px;
+      }
+    }
+
+    /* Impression */
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        padding: 0;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header class="hero">
+      <div>
+        <h1>Arusan GNANASIRI</h1>
+        <div class="role">
+          Technicien Support Informatique
+          <p> 7 jours en entreprise et 3 jours en formation </p>
+        </div>
+      </div>
+
+      <!-- 
+      Le QR code pointera vers l'URL où cette page sera hébergée.
+      Remplacez la valeur "data=" par votre future URL, 
+      ou générez votre propre QR code (voir les instructions fournies).
+    -->
+      <div class="qr-block">
+        <!-- <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://votre-site.exemple.com"
+          alt="QR code vers ce CV"> -->
+        <span>CV digitalisé</span>
+      </div>
+    </header>
+
+    <div class="layout">
+
+      <aside>
+
+        <div>
+          <img class="photo" src="img/photo-cv.jpeg" alt="Photo d'Arusan GNANASIRI">
+        </div>
+
+        <div>
+          <p class="block-title">Contact</p>
+          <ul class="contact-list">
+            <li>arusangnr@gmail.com</li>
+            <li>+33 7 83 66 42 20</li>
+            <li>Evry-Courcouronnes, France</li>
+            <li>
+              <a target="_blank" href="www.linkedin.com/in/arusangnanasiri">linkedin.com/in/arusangnanasiri</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="block-title">Langues</p>
+          <ul class="languages">
+            <li><span>Anglais</span><b>Niveau avancé (B1)</b></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="block-title">Compétences</p>
+          <ul class="skills">
+            <li>Composants PC</li>
+            <li>Périphériques</li>
+            <li>Binaires (Mathématique des réseaux)</li>
+            <li>Addressage IP</li>
+            <li>PowerShell (commandes de base sur le terminal)</li>
+            <li>Configuration Switch et Routeur</li>
+            <li>Cisco Packet Tracer</li>
+            <li>HTML / CSS (Vs Code)</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="block-title">Certification OpenClassrooms & NetAcad</p>
+          <ul class="skills">
+            <li>Concevez votre réseau TCP/IP,</li>
+            <li>Réalisez un test d’intrusion web,</li>
+            <li>Notions de base sur les réseaux,</li>
+            <li>HTML5/CSS3,</li>
+            <li>Analysez et gérez des risques SI,</li>
+            <li>Sécurisez vos données avec de la cryptographie,</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="block-title">Qualités</p>
+          <ul class="skills">
+            <li>Polyvalent, Autonome</li>
+            <li>Organiser</li>
+            <li>Motivé</li>
+            <li>Travail en équipe</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="block-title">Centres d'intéret</p>
+          <ul class="skills">
+            <li>Jeux de stratégie</li>
+            <li>Maintenance Informatique (Carte Processeur, Câblage)</li>
+          </ul>
+        </div>
+
+      </aside>
+
+      <main>
+        <p class="summary">
+          Inspiré par mon frère, j’ai découvert l’informatique très jeune, aujourd’hui je cherche à monter en compétence
+          en entreprise et construire mon avenir dans ce domaine.
+        </p>
+        <section>
+          <div>
+            <p class="block-title">Formation</p>
+            <div class="timeline">
+
+              <div class="entry">
+                <div class="meta">
+                  <h3>TSSR à Schola Nova (à venir)</h3>
+                  <span class="dates">2026 — 2028</span>
+                </div>
+                <div class="org">
+                  Schola Nova - Paris (75019)
+                  Durée de 18 mois
+                </div>
+                <li>Gestion active directory</li>
+                <!-- <li></li>
+                <li></li>
+                <li></li> -->
+              </div>
+
+              <div class="entry">
+                <div class="meta">
+                  <h3>SAS de montée en compétences</h3>
+                  <span class="dates">2026</span>
+                </div>
+                <div class="org">
+                  Schola Nova - Paris (75019)
+                  9 Juin au 30 Juillet
+                </div>
+                <li>Réalisation d’une présentation sur le routage statique et OSPF</li>
+                <li>Configuration de table de routage statique et dynamique (protocole OSPF)</li>
+                <li>Gestion de Machine virtuelle avec Proxmox et VirtualBox</li>
+                <li>Utilisation des commandes de base sous Linux et Windows : Installation d’application / logiciel et
+                  vérification d’adresse IP</li>
+                <li>Configuration de VLAN et de Trunk : Communication de deux réseaux sur un switch grâce a une route
+                  Trunk</li>
+                <li>Création de règles au pare feu : Permettant la communication entre les machines</li>
+                <li>Schématisation avec Cisco Packet Tracer</li>
+              </div>
+
+              <div class="entry">
+                <div class="meta">
+                  <h3>Numérik'Pro Tech</h3>
+                  <span class="dates">2026</span>
+                </div>
+                <div class="org">
+                  Association Colombbus - Évry (91000)
+                </div>
+                <li>Maintenance Informatique : Installation d’une iso, Réparation d’une machine (changement d’écran)
+                </li>
+                <li>Cybersécurité : Schématisation avec Cisco Packet Tracer</li>
+                <li>Développement Web : Conception d’un jeu de plateforme</li>
+              </div>
+
+              <div class="entry">
+                <div class="meta">
+                  <h3>Numérik'Up</h3>
+                  <span class="dates">2026</span>
+                </div>
+                <div class="org">
+                  Association Colombbus - Évry (91000)
+                </div>
+                <li>Game design : Petit jeu de plateforme de 3 niveau</li>
+                <li>Développement Web : Création d’une page web html pour le jeu de plateforme</li>
+                <li>Graphisme : Réalisation d’un logo pour ma page web</li>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <p class="block-title">Expérience Professionnelle</p>
+          <div class="timeline">
+
+            <div class="entry">
+              <div class="meta">
+                <h3>Employé polyvalent</h3>
+                <span class="dates">Août 2024 — Février 2025</span>
+              </div>
+              <div class="org">Association Lucie, Bondoufle (91070)</div>
+              <li>Organisation du stock (500 livres / Jour)</li>
+              <li>Contrôle du matériel (environ 10 cartons / Jour)</li>
+              <li>Traitement des commandes reçues (environ 3 / jour)</li>
+              <li>Préparation et conditionnement des commandes (entre 100 et 200 envoies / jour)</li>
+            </div>
+
+          </div>
+        </section>
+      </main>
+
+    </div>
+
+    <footer>
+      CV consultable en ligne · dernière mise à jour août 2026
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
