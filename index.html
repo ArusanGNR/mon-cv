@@ -50,6 +50,66 @@
       /* -webkit-font-smoothing: antialiased; */
     }
 
+    /* Bannière */
+
+    .network-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .network-bg svg {
+      width: 100%;
+      height: 100%;
+      opacity: 0.3;
+    }
+
+    .network-bg .line {
+      stroke: var(--rule);
+      stroke-width: 1;
+      fill: none;
+    }
+
+    .network-bg .node {
+      fill: var(--accent-soft);
+      animation: nodePulse 7s ease-in-out infinite;
+    }
+
+    .network-bg .node:nth-child(odd) {
+      animation-delay: 1.2s;
+    }
+
+    .network-bg .packet {
+      fill: var(--accent);
+      opacity: 0.8;
+    }
+
+    @keyframes nodePulse {
+
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 0.9;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .network-bg .node,
+      .network-bg .packet {
+        animation: none;
+      }
+
+      .network-bg .packet {
+        display: none;
+      }
+    }
+
     /* Mise en page générale */
     .page {
       max-width: 960px;
@@ -85,11 +145,65 @@
       margin: 0 0 6px;
     }
 
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header.hero,
+    aside,
+    main {
+      animation: fadeInUp 1.6s ease-out both;
+    }
+
+    aside {
+      animation-delay: 0.3s;
+    }
+
+    main {
+      animation-delay: 0.6s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      header.hero,
+      aside,
+      main {
+        animation: none;
+      }
+    }
+
+    .skills li {
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .skills li:hover {
+      transform: translateY(-2px);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .timeline .entry::before {
+      transition: transform 0.2s ease;
+    }
+
+    .timeline .entry:hover::before {
+      transform: scale(1.4);
+    }
+
     .hero .role {
       font-size: 1.05rem;
       color: var(--accent);
       font-weight: 500;
       letter-spacing: 0.02em;
+      font-weight: 700 bold;
     }
 
     .qr-block {
@@ -318,6 +432,59 @@
 </head>
 
 <body>
+
+  <div class="network-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <!-- Liaisons -->
+      <path id="edge1" class="line" d="M150,120 L400,80" />
+      <path id="edge2" class="line" d="M400,80 L700,150" />
+      <path id="edge3" class="line" d="M700,150 L950,100" />
+      <path id="edge4" class="line" d="M400,80 L500,350" />
+      <path id="edge5" class="line" d="M150,120 L200,400" />
+      <path id="edge6" class="line" d="M200,400 L500,350" />
+      <path id="edge7" class="line" d="M500,350 L800,420" />
+      <path id="edge8" class="line" d="M700,150 L800,420" />
+      <path id="edge9" class="line" d="M800,420 L1050,380" />
+      <path id="edge10" class="line" d="M200,400 L350,650" />
+      <path id="edge11" class="line" d="M500,350 L650,600" />
+      <path id="edge12" class="line" d="M800,420 L900,680" />
+
+      <!-- Nœuds -->
+      <circle class="node" cx="150" cy="120" r="4" />
+      <circle class="node" cx="400" cy="80" r="4" />
+      <circle class="node" cx="700" cy="150" r="4" />
+      <circle class="node" cx="950" cy="100" r="4" />
+      <circle class="node" cx="200" cy="400" r="4" />
+      <circle class="node" cx="500" cy="350" r="4" />
+      <circle class="node" cx="800" cy="420" r="4" />
+      <circle class="node" cx="1050" cy="380" r="4" />
+      <circle class="node" cx="350" cy="650" r="4" />
+      <circle class="node" cx="650" cy="600" r="4" />
+      <circle class="node" cx="900" cy="680" r="4" />
+
+      <!-- Paquets qui circulent le long des liaisons -->
+      <circle class="packet" r="3">
+        <animateMotion dur="4s" repeatCount="indefinite">
+          <mpath href="#edge2" />
+        </animateMotion>
+      </circle>
+      <circle class="packet" r="3">
+        <animateMotion dur="5.5s" repeatCount="indefinite" begin="1s">
+          <mpath href="#edge6" />
+        </animateMotion>
+      </circle>
+      <circle class="packet" r="3">
+        <animateMotion dur="4.5s" repeatCount="indefinite" begin="2s">
+          <mpath href="#edge9" />
+        </animateMotion>
+      </circle>
+      <circle class="packet" r="3">
+        <animateMotion dur="6s" repeatCount="indefinite" begin="0.5s">
+          <mpath href="#edge11" />
+        </animateMotion>
+      </circle>
+    </svg>
+  </div>
 
   <div class="page">
 
